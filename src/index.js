@@ -9,7 +9,7 @@ import Apphostpage from './applications/Apphostpage';
 import Userloginpage from './applications/users/userauth/Userloginpage';
 import Userregistorpage from './applications/users/userauth/Userregistorpage';
 import Userlandingpage from './applications/users/usersdashboard/Userlandingpage';
-import Mainpage from './applications/users/usersdashboard/Mainpage';
+
 import Useraboutpage from './applications/users/usersdashboard/Useraboutpage';
 import Userreportpage from './applications/users/usersdashboard/Userreportpage';
 import Dashboard from './compo/Dashboard';
