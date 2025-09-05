@@ -17,7 +17,9 @@ function Appsidebarpage() {
                             <li><Link to="/user-management/landing" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Home</Link></li>
                             <li><Link to="about" class="link-body-emphasis d-inline-flex text-decoration-none rounded">About</Link></li>
                             <li><Link to="report" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</Link></li>
+                             <li><Link to="chart" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Graph Page</Link></li>
                         </ul>
+                      
                     </div>
                 </li>
                 <li class="mb-1"> <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">

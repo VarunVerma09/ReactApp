@@ -13,6 +13,7 @@ import Userlandingpage from './applications/users/usersdashboard/Userlandingpage
 import Useraboutpage from './applications/users/usersdashboard/Useraboutpage';
 import Userreportpage from './applications/users/usersdashboard/Userreportpage';
 import Dashboard from './compo/Dashboard';
+import Chartpage from './applications/users/usersdashboard/Chartpage';
 
 
 
@@ -30,6 +31,7 @@ root.render(
         <Route path='' element={<Dashboard/>}></Route>
         <Route path='about' element={<Useraboutpage/>}></Route>
         <Route path='report' element={<Userreportpage/>}></Route>
+        <Route path='chart' element={<Chartpage/>}></Route>
 
     </Route>
   </Routes>
