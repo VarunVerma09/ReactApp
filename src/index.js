@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./applications/customsource/global.css";
 import Apploginpage from './applications/appauth/Apploginpage';
-import { BrowserRouter,Route,Routes  } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
 import Apphostpage from './applications/Apphostpage';
 import Userloginpage from './applications/users/userauth/Userloginpage';
 import Userregistorpage from './applications/users/userauth/Userregistorpage';
@@ -14,6 +15,7 @@ import Useraboutpage from './applications/users/usersdashboard/Useraboutpage';
 import Userreportpage from './applications/users/usersdashboard/Userreportpage';
 import Dashboard from './compo/Dashboard';
 import Chartpage from './applications/users/usersdashboard/Chartpage';
+import ProductDetails from './applications/users/usersdashboard/ProductDetails';
 
 
 
@@ -32,6 +34,9 @@ root.render(
         <Route path='about' element={<Useraboutpage/>}></Route>
         <Route path='report' element={<Userreportpage/>}></Route>
         <Route path='chart' element={<Chartpage/>}></Route>
+        <Route path='details/:id' element={<ProductDetails/>}></Route>
+
+
 
     </Route>
   </Routes>

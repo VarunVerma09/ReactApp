@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Appsidebarpage() {
     return (
-        <div class="flex-shrink-0 p-3 ">
+        <div class="flex-shrink-0 p-3 sidebar ">
             <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
                 <span class="fs-5   fw-semibold">Administrator</span>
             </a>

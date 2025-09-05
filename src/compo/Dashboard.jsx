@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BsGraphUpArrow } from "react-icons/bs";
 import axios from 'axios';
-
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import NewChart from './NewChart';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const [mydata, setdata] = useState({});
@@ -16,12 +15,14 @@ const Dashboard = () => {
 
       setdata(d.data);
       apidata(d.data.products);
+      const categories = [...new Set(d.data.products.map((p) => p.category))];
+      setScat(categories);
     });
   };
 
   useEffect(() => {
     myapi();
-    filterByCategory();
+
   }, []);
 
   const addfilter = (e) => {
@@ -33,7 +34,7 @@ const Dashboard = () => {
 
       const filtered = products.filter((item) => item.price < value);
 
-      
+
       apidata(filtered);
     });
   };
@@ -44,6 +45,7 @@ const Dashboard = () => {
       const products = d.data.products;
       const filtered = products.filter((item) => item.category === value);
       apidata(filtered);
+
     });
   };
 
@@ -120,7 +122,7 @@ const Dashboard = () => {
             <div className="col-md-4 col-sm-12">
               <h4 className='text-center mt-3 mb-4'>Filtter</h4>
               <select className=' w-100 p-3 form-select' onChange={addfilter}>
-                <option hidden>Select Limit</option>
+                <option hidden>Select Price</option>
                 <option value="20">Less then 100</option>
                 <option value="100">Less then 300</option>
                 <option value="100">Less then 500</option>
@@ -130,18 +132,18 @@ const Dashboard = () => {
               </select></div>
             <div className="col-md-4 col-sm-12">
               <h4 className='text-center mt-3 mb-4'>Category Filter</h4>
-              <select className='form-select' onChange={filterByCategory}>
+              <select className='form-select p-3' onChange={filterByCategory}>
                 <option hidden>Select Category</option>
                 {scat.map((cat, i) => (
                   <option key={i} value={cat}>{cat}</option>
                 ))}
               </select>
-              
-            </div>  
+
+            </div>
           </div>
         </div>
         <div></div>
-        <div className='g-0 w-[80%]'><NewChart/></div>
+        <div className='g-0 w-[80%]'><NewChart /></div>
 
 
         <div className="row ">
@@ -149,11 +151,12 @@ const Dashboard = () => {
             <div className="col-lg-2 col-md-3 col-sm-6 col-12" key={d.id}>
               <div className="card h-100">
                 <img src={d.thumbnail} alt={d.title} className="card-img-top img-fluid"
-                  style={{ objectFit: "contain" }} />
+                   />
                 <div className="card-body">
                   <h6 className="card-title">{d.title}</h6>
                   <p className="text-muted small mb-1">{d.category}</p>
                   <p className="fw-bold">₹{d.price}</p>
+                  <Link to={"details/" + d.id} className="px-2 py-1 bg-danger rounded text-white text-decoration-none">Buy</Link>
                 </div>
               </div>
             </div>

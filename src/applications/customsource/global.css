@@ -146,12 +146,21 @@ background-color: rgba(20,57,86,1);
   
 }
 
+/* ==========responsive================== */
+
+@media (max-width: 500px) {
+  .sidebar {
+    display: none;
+  }
+}
 
 
 
 
 
-
+/* ::-webkit-scrollbar-.imgs{
+  display: none;
+} */
 
 
 
