@@ -2,50 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const datas = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
 
 function Chartpage() {
 
@@ -54,17 +10,30 @@ function Chartpage() {
 
   const myapi = () => {
     axios.get('https://dummyjson.com/products?limit=50').then((d) => {
-      console.log(d.data.products)
+
       setpdata(d.data.products);
 
       const xyz = [...new Set(d.data.products.map(c => c.category))];
-      console.log(xyz);
+
 
       setscat(xyz);
 
 
     });
   }
+  const catagory = (e) => {
+    const selectedCategory = e.target.value;
+
+    axios.get('https://dummyjson.com/products?limit=200').then((d) => {
+      const data = d.data.products;
+
+      // filter items based on selected category
+      const filterCatagory = data.filter((item) => item.category === selectedCategory);
+
+      console.log(filterCatagory);
+      setpdata(filterCatagory); // update chart with filtered data
+    });
+  };
 
 
   useEffect(() => {
@@ -79,20 +48,14 @@ function Chartpage() {
     <div className='container-fluid mt-3'>
       <div className='row'>
         <div className='col-md-3'>
-          <select className='form-select'>
-            <option>category</option>
-            {scat.map((c) => {
-              return <option>{c}</option>
-            })}
+          <select className='form-select' onChange={catagory}>
+            <option value="">Select Category</option>
+            {scat.map((c, i) => (
+              <option key={i} value={c}>{c}</option>
+            ))}
           </select>
         </div>
-         <div className='col-md-3'>
-          <select className='form-select'>
-            <option hidden>Select Limit</option>
-            
-          
-          </select>
-        </div>
+
       </div>
       <div className='row'>
         <div className='col-12'>
